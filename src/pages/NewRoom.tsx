@@ -1,15 +1,15 @@
-import { push, ref } from "firebase/database"
-import { FormEvent, useState } from "react"
-import { Link } from "react-router-dom"
-import illustrationImg from "../assets/images/illustration.svg"
-import logoImg from "../assets/images/logo.svg"
+import { push, ref } from "firebase/database";
+import { FormEvent, useState } from "react";
+import { Link } from "react-router-dom";
+import illustrationImg from "../assets/images/illustration.svg";
+import logoImg from "../assets/images/logo.svg";
 
-import { Button } from "../components/Button"
-import { database } from "../services/firebase"
-import { useAuth } from "../hooks/useAuth"
+import { Button } from "../components/Button";
+import { database } from "../services/firebase";
+import { useAuth } from "../hooks/useAuth";
 
-import "../styles/auth.scss"
-import { useNavigate } from "react-router-dom"
+import "../styles/auth.scss";
+import { useNavigate } from "react-router-dom";
 
 export function NewRoom() {
   const { user } = useAuth();
@@ -28,9 +28,9 @@ export function NewRoom() {
     const firebaseRoom = await push(roomRef, {
       title: newRoom,
       authorId: user?.id
-    })
+    });
 
-    navigate(`/rooms/${firebaseRoom.key}`)
+    navigate(`/rooms/${firebaseRoom.key}`);
   }
 
   return (
@@ -61,5 +61,5 @@ export function NewRoom() {
         </div>
       </main>
     </div>
-  )
+  );
 }

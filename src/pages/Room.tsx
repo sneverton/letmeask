@@ -1,14 +1,14 @@
-import { onValue, push, ref } from "firebase/database"
-import { FormEvent, useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import logoImg from "../assets/images/logo.svg"
+import { onValue, push, ref } from "firebase/database";
+import { FormEvent, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import logoImg from "../assets/images/logo.svg";
 
-import { Button } from "../components/Button"
-import { RoomCode } from "../components/RoomCode"
-import { useAuth } from "../hooks/useAuth"
-import { database } from "../services/firebase"
+import { Button } from "../components/Button";
+import { RoomCode } from "../components/RoomCode";
+import { useAuth } from "../hooks/useAuth";
+import { database } from "../services/firebase";
 
-import "../styles/room.scss"
+import "../styles/room.scss";
 
 type FirebaseQuestions = Record<string, {
   author: {
@@ -46,7 +46,7 @@ export function Room() {
   const roomId = params.id!;
 
   useEffect(() => {
-    const roomRef = ref(database, `rooms/${roomId}`)
+    const roomRef = ref(database, `rooms/${roomId}`);
 
     onValue(
       roomRef,
@@ -61,14 +61,14 @@ export function Room() {
             author: value.author,
             isAnswered: value.isAnswered,
             isHighlighted: value.isHighlighted
-          }
+          };
         });
 
         setTitle(databaseRoom.title);
         setQuestions(parsedQuestions);
       }
     );
-  }, [roomId])
+  }, [roomId]);
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -89,7 +89,7 @@ export function Room() {
       },
       isHighlighted: false,
       isAnswered: false
-    }
+    };
 
     const questionRef = ref(database, `rooms/${roomId}/questions`);
     await push(questionRef, question);
@@ -134,5 +134,5 @@ export function Room() {
         {JSON.stringify(questions)}
       </main>
     </div>
-  )
+  );
 }

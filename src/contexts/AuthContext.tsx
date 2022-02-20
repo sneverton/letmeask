@@ -35,19 +35,19 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
           id: uid,
           name: displayName,
           avatar: photoURL
-        })
+        });
       }
-    })
+    });
 
     return () => {
       unsubscribe();
-    }
-  }, [])
+    };
+  }, []);
 
   async function signInWithGoogle() {
     const provider = new GoogleAuthProvider();
 
-    const result = await signInWithPopup(auth, provider)
+    const result = await signInWithPopup(auth, provider);
 
     if (result.user) {
       const { displayName, photoURL, uid } = result.user;
@@ -60,7 +60,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         id: uid,
         name: displayName,
         avatar: photoURL
-      })
+      });
     }
   }
 
@@ -68,5 +68,5 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     <AuthContext.Provider value={{ user, signInWithGoogle }}>
       {props.children}
     </AuthContext.Provider>
-  )
+  );
 }

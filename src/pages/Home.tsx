@@ -1,15 +1,15 @@
-import illustrationImg from "../assets/images/illustration.svg"
-import logoImg from "../assets/images/logo.svg"
-import googleIconImg from "../assets/images/google-icon.svg"
+import illustrationImg from "../assets/images/illustration.svg";
+import logoImg from "../assets/images/logo.svg";
+import googleIconImg from "../assets/images/google-icon.svg";
 
-import { Button } from "../components/Button"
+import { Button } from "../components/Button";
 
-import "../styles/auth.scss"
-import { useNavigate } from "react-router-dom"
-import { useAuth } from "../hooks/useAuth"
-import { FormEvent, useState } from "react"
-import { get, ref } from "firebase/database"
-import { database } from "../services/firebase"
+import "../styles/auth.scss";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
+import { FormEvent, useState } from "react";
+import { get, ref } from "firebase/database";
+import { database } from "../services/firebase";
 
 export function Home() {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ export function Home() {
       return;
     }
 
-    navigate(`/rooms/${roomCode}`)
+    navigate(`/rooms/${roomCode}`);
   }
 
   return (
@@ -71,5 +71,5 @@ export function Home() {
         </div>
       </main>
     </div>
-  )
+  );
 }
